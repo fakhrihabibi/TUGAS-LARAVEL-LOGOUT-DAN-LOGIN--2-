@@ -14,8 +14,3 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/cosplays', [CosplayController::class, 'index'])->name('cosplays.index');
 
-// Protected routes
-Route::middleware(['auth'])->group(function () {
-    Route::resource('cosplays', CosplayController::class)->except(['index']);
-    Route::get('/cosplays', [CosplayController::class, 'index'])->name('cosplays.index');
-});
